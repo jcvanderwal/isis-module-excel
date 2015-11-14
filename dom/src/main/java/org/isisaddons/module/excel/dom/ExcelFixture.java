@@ -149,13 +149,16 @@ public class ExcelFixture extends FixtureScript {
             }
         }
     }
-
     //region > bytes
     private byte[] bytes;
 
     private byte[] getBytes() {
         if (bytes == null) {
-            bytes = readBytes();
+            if (blob != null){
+                bytes = blob.getBytes();
+            } else {
+                bytes = readBytes();
+            }
         }
         return bytes;
     }
